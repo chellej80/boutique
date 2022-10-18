@@ -9,13 +9,8 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
+
 import os
-
-from dotenv import load_dotenv 
-load_dotenv() 
-
-
-
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -50,6 +45,7 @@ INSTALLED_APPS = [
     'products',
     'bag',
     'checkout',
+    'profiles',
 
     # Other
     'crispy_forms',
@@ -105,8 +101,6 @@ AUTHENTICATION_BACKENDS = (
 )
 
 SITE_ID = 1
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField' 
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
@@ -180,3 +174,4 @@ STANDARD_DELIVERY_PERCENTAGE = 10
 STRIPE_CURRENCY = 'usd'
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
+STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
