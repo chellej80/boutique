@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import dj_database_url
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -122,11 +123,9 @@ WSGI_APPLICATION = 'boutique_ado.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    'default': dj_database_url.parse('postgres://jwipzzujpkbute:4c9925354c93c604538a341634f558fb4c043e672d49d9951e520ef8f87ffdaf@ec2-63-34-180-86.eu-west-1.compute.amazonaws.com:5432/dahf8k04ngoh9g'),    
     }
-}
+
 
 
 # Password validation
