@@ -29,7 +29,7 @@ SECRET_KEY = 'p@ei#69*b*zz3u4yie-$()@cy^l(+x9&@6ypx+r0lm(3%_9hr7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['boutique-ado-mj.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -126,7 +126,12 @@ WSGI_APPLICATION = 'boutique_ado.wsgi.application'
 #   'default': dj_database_url.parse('postgres://jwipzzujpkbute:4c9925354c93c604538a341634f558fb4c043e672d49d9951e520ef8f87ffdaf@ec2-63-34-180-86.eu-west-1.compute.amazonaws.com:5432/dahf8k04ngoh9g'),    
 #   }
 
-DATABASES = {
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }
+else:
+    DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
